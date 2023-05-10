@@ -21,7 +21,7 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.ref }}
       # Make sure the value of GITHUB_TOKEN will not be persisted in repo's config
-      persist-credentials: false
+        persist-credentials: false
     
     - name: prettify code
       uses: creyD/prettier_action@v4.3
@@ -61,16 +61,15 @@ jobs:
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REPOSITORY: fullstack
-        IMAGE_TAG: 1.0
+        IMAGE_TAG: 1.1
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
     
     - name: Update kube config 
-      run: aws eks update-kubeconfig --name terraform-eks-dev
+      run: aws eks update-kubeconfig --name fullstack
     
     - name: Deploy to EKS 
       run: |
-        kubectl apply -f secret.yml 
         kubectl apply -f deployment.yml
         kubectl apply -f service.yml

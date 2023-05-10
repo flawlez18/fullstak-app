@@ -14,9 +14,9 @@ EXPOSE 3000
 
 # Copy public and src directories over to /usr/src/app directory
 
-COPY public/ /usr/src/app
+COPY rdicidr-0.1.0/public/ /usr/src/app
 
-COPY src/ /usr/src/app
+COPY rdicidr-0.1.0/src/ /usr/src/app
 
 #start application 
 
