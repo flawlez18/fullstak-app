@@ -24,4 +24,4 @@ spec:
         - name: myapp_password
           valueFrom:
             secretKeyRef:
-              key: my_secret 
+              key: my-secret 
