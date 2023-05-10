@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: 5577456190159.dkr.ecr.us-west-1.amazonaws.com/fullstack:1.1
+        image: 577456190159.dkr.ecr.us-west-1.amazonaws.com/fullstack:1.1
         imagePullPolicy: Always
         resources:
           requests:
@@ -27,12 +27,12 @@ spec:
             cpu: 500m
         ports:
         - containerPort: 3000
-        env:
-        - name: my-secret
-          valueFrom:
-            secretKeyRef:
-              name: my-secret
-              key: my-secret
+        # env:
+        # - name: my-secret
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: my-secret
+        #       key: my-secret
 
 
 
