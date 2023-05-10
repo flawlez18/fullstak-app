@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,6 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myapp
+  replicas: 1
   template:
     metadata:
       labels:
@@ -13,15 +15,24 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: 577456190159.dkr.ecr.us-west-1.amazonaws.com/fullstack:1.0
+        image: 5577456190159.dkr.ecr.us-west-1.amazonaws.com/fullstack:1.1
+        imagePullPolicy: Always
         resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            memory: 512Mi
+            cpu: 500m
         ports:
         - containerPort: 3000
         env:
-        - name: myapp_password
+        - name: my-secret
           valueFrom:
             secretKeyRef:
-              key: my-secret 
+              name: my-secret
+              key: my-secret
+
+
+
+
